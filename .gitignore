@@ -1,0 +1,20 @@
+### Eclipse IDE ###
+.checkstyle
+.classpath
+.project
+.settings
+bin/
+
+### Java ###
+.class
+.ear
+.jar
+.war
+
+### Gradle ###
+.gradle
+/build/
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
