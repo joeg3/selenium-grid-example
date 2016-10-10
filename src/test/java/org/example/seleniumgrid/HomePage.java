@@ -1,5 +1,6 @@
 package org.example.seleniumgrid;
 
+import static org.testng.AssertJUnit.assertTrue;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,18 +20,23 @@ public class HomePage extends LoadableComponent<HomePage> {
     private WebElement searchButton;
 
     public HomePage(WebDriver driver) {
+        System.out.println("here1");
         this.driver = driver;
         PageFactory.initElements(driver, this);
+        System.out.println("here2");
     }
     
     @Override
     protected void load() {
+        System.out.println("here!!!!!");
         this.driver.get(url);
     }
     
     @Override
     protected void isLoaded() throws Error {
-        driver.getTitle().equals(title);
+        if (!driver.getTitle().equals(title)) {
+            throw new Error("Duck Duck Go page not loaded");
+        }
     }
 
     public String getTitle(){

@@ -11,6 +11,9 @@ bin/
 .jar
 .war
 
+### TestNG Report ###
+test-output/
+
 ### Gradle ###
 .gradle
 /build/
