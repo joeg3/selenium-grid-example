@@ -1,0 +1,43 @@
+{
+  "capabilities":
+      [
+        {
+          "browserName": "firefox",
+          "version": "46",
+          "platform": "LINUX",
+          "maxInstances": 4,
+          "seleniumProtocol": "WebDriver"
+        },
+      {
+        "browserName": "internet explorer",
+        "version": "10",
+        "platform": "WINDOWS",
+        "maxInstances": 4,
+        "seleniumProtocol": "WebDriver"
+      },
+      {
+        "browserName": "safari",
+        "version": "9",
+        "platform": "MAC",
+        "maxInstances": 4,
+        "seleniumProtocol": "WebDriver"
+      },
+      {
+        "browserName": "chrome",
+        "version": "35",
+        "platform": "LINUX",
+        "maxInstances": 4,
+        "seleniumProtocol": "WebDriver"
+      }
+      ],
+  "configuration":
+  {
+    "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
+    "maxSession": 5,
+    "port": 5555,
+    "register": true,
+    "registerCycle": 5000,
+    "hubPort": 4444,
+    "hubHost": "http://10.0.1.7:4444/grid/register/"
+  }
+}

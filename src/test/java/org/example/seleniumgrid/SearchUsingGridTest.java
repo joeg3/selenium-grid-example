@@ -23,58 +23,60 @@ public class SearchUsingGridTest {
     @Parameters({ "platform", "browser", "version", "url" })
     @BeforeTest(alwaysRun = true)
     public void setup(String platform, String browser, String version, String url) throws MalformedURLException {
-        DesiredCapabilities caps = new DesiredCapabilities();
-    
-        System.out.printf("Search using platform: '%s', browser: '%s', version: '%s'", platform, browser, version);
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        System.out.println("!!!!!!!!!Entering SearchUsingGridTest.setup()");
+        System.out.printf("!!!!!!!!!Search using: %s, %s %s\n", platform, browser, version);
         
         // Browsers
         if (browser.equalsIgnoreCase("Internet Explorer")) {
-            caps = DesiredCapabilities.internetExplorer();
-            caps.setBrowserName("internet explorer");
+            capabilities = DesiredCapabilities.internetExplorer();
+            capabilities.setBrowserName("internet explorer");
         }
 
         if (browser.equalsIgnoreCase("Firefox")) {
-            caps = DesiredCapabilities.firefox();
-            caps.setBrowserName("firefox");
+            capabilities = DesiredCapabilities.firefox();
+            capabilities.setBrowserName("firefox");
+            //capabilities.setCapability("marionette", true);
         }
 
         if (browser.equalsIgnoreCase("Chrome")) {
-            caps = DesiredCapabilities.chrome();
-            caps.setBrowserName("chrome");
+            capabilities = DesiredCapabilities.chrome();
+            capabilities.setBrowserName("chrome");
         }
 
         if (browser.equalsIgnoreCase("Safari")) {
-            caps = DesiredCapabilities.safari();
-            caps.setBrowserName("safari");
+            capabilities = DesiredCapabilities.safari();
+            capabilities.setBrowserName("safari");
         }
         
         // Platforms
         if (platform.equalsIgnoreCase("Windows")) {
-            caps.setPlatform(org.openqa.selenium.Platform.WINDOWS);
+            capabilities.setPlatform(org.openqa.selenium.Platform.WINDOWS);
         }
 
         if (platform.equalsIgnoreCase("MAC")) {
-            caps.setPlatform(org.openqa.selenium.Platform.MAC);
+            capabilities.setPlatform(org.openqa.selenium.Platform.MAC);
         }
         
         if (platform.equalsIgnoreCase("LINUX")) {
-            caps.setPlatform(org.openqa.selenium.Platform.LINUX);
+            capabilities.setPlatform(org.openqa.selenium.Platform.LINUX);
         }
 
-        // Version
-        caps.setVersion(version);
+        //capabilities.setVersion(version);
         
-        driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), caps);
-
+        System.out.println("!!!!!!!!!Before setting driver to: http://localhost:4444/wd/hub");
+        driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
+        System.out.println("!!!!!!!!!After setting driver to: http://localhost:4444/wd/hub");
         // Open browser to URL
         homepage = new HomePage(driver);
         homepage.get();
         //driver.get(url);
-        
+        System.out.println("!!!!!!!!!Exiting SearchUsingGridTest.setup()");
     }
     
     @AfterTest
     public void afterTest() {
+        driver.close();
         driver.quit();
     }
     
