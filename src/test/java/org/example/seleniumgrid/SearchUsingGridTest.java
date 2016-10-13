@@ -31,22 +31,25 @@ public class SearchUsingGridTest {
         if (browser.equalsIgnoreCase("Internet Explorer")) {
             capabilities = DesiredCapabilities.internetExplorer();
             capabilities.setBrowserName("internet explorer");
+            capabilities.setVersion(version);
         }
 
         if (browser.equalsIgnoreCase("Firefox")) {
             capabilities = DesiredCapabilities.firefox();
             capabilities.setBrowserName("firefox");
-            //capabilities.setCapability("marionette", true);
+            capabilities.setVersion(version);
         }
 
         if (browser.equalsIgnoreCase("Chrome")) {
             capabilities = DesiredCapabilities.chrome();
             capabilities.setBrowserName("chrome");
+            capabilities.setVersion(version);
         }
 
         if (browser.equalsIgnoreCase("Safari")) {
             capabilities = DesiredCapabilities.safari();
             capabilities.setBrowserName("safari");
+            capabilities.setVersion(version);
         }
         
         // Platforms

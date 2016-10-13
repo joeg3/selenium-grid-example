@@ -2,6 +2,10 @@
 
 A small project I created to help me learn Selenium Grid
 
+Additional resoruces needed:
+Go to seleniumhq.org/download and download the Selenium server standalone jar file.  I used selenium-server-standalone-2.47.0.jar for this test.
+Copy the downloaded jar into the project's src/test/resources folder.
+
 
 Start Selenium Hub:
 ~/selenium-grid$ sudo java -jar selenium-server-standalone-2.53.1.jar -port 4444 -role hub -nodeTimeout 600

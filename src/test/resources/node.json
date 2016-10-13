@@ -3,8 +3,15 @@
     [
       {
         "browserName": "firefox",
-        
+        "version": "49.0",
         "platform": "LINUX",
+        "maxInstances": 4,
+        "seleniumProtocol": "WebDriver"
+      },
+      {
+        "browserName": "internet explorer",
+        "version": "10",
+        "platform": "WINDOWS",
         "maxInstances": 4,
         "seleniumProtocol": "WebDriver"
       },
@@ -24,6 +31,6 @@
     "register": true,
     "registerCycle": 5000,
     "hubPort": 4444,
-    "hubHost": "http://10.0.1.7:4444/grid/register/"
+    "hubHost": "127.0.0.1"
   }
 }
