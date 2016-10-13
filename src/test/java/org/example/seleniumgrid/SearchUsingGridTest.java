@@ -24,8 +24,6 @@ public class SearchUsingGridTest {
     @BeforeTest(alwaysRun = true)
     public void setup(String platform, String browser, String version, String url) throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        System.out.println("!!!!!!!!!Entering SearchUsingGridTest.setup()");
-        System.out.printf("!!!!!!!!!Search using: %s, %s %s\n", platform, browser, version);
         
         // Browsers
         if (browser.equalsIgnoreCase("Internet Explorer")) {
@@ -65,16 +63,13 @@ public class SearchUsingGridTest {
             capabilities.setPlatform(org.openqa.selenium.Platform.LINUX);
         }
 
-        //capabilities.setVersion(version);
+        capabilities.setVersion(version);
         
-        System.out.println("!!!!!!!!!Before setting driver to: http://localhost:4444/wd/hub");
         driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
-        System.out.println("!!!!!!!!!After setting driver to: http://localhost:4444/wd/hub");
+
         // Open browser to URL
         homepage = new HomePage(driver);
         homepage.get();
-        //driver.get(url);
-        System.out.println("!!!!!!!!!Exiting SearchUsingGridTest.setup()");
     }
     
     @AfterTest

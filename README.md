@@ -2,19 +2,22 @@
 
 A small project I created to help me learn Selenium Grid
 
-Additional resoruces needed:
-Go to seleniumhq.org/download and download the Selenium server standalone jar file.  I used selenium-server-standalone-2.47.0.jar for this test.
-Copy the downloaded jar into the project's src/test/resources folder.
+### Tools
+I ran the tests on Ubuntu 16.04, and used Eclipse for development.
 
+### Project Setup
+1. Go to seleniumhq.org/download and download the Selenium server standalone jar file.  I used selenium-server-standalone-2.47.0.jar for this test.
+2. Copy the downloaded jar into the project's `src/test/resources` folder. This is where the config files are, which makes it easier from the command line.
+3. Download the chrome driver to a directory on your hard drive. I used `~/drivers`.
+4. Add the driver directory to your $PATH or %PATH%.
+
+### Start the Hub and Node
+Note we don't need to specify the driver in the command because it is on our $PATH, and we don't need to specify the hub when starting the node becasue that is in the JSON files.
 
 Start Selenium Hub:
-~/selenium-grid$ sudo java -jar selenium-server-standalone-2.53.1.jar -port 4444 -role hub -nodeTimeout 600
+1. In a terminal, cd to: `selenium-grid-example/src/test/resources`
+2. Run the following command: `java -jar selenium-server-standalone-2.47.0.jar -role hub -hubConfig hub.json`
 
-Or more recently: 
-~/code/joeg3/selenium-grid-example/src/test/resources$ java -jar selenium-server-standalone-2.53.1.jar -role hub -hubConfig hub.json
-
-Start Chrome node:
-~/selenium-grid$ java -jar -Dwebdriver.chrome.driver=/home/joe/drivers/chromedriver selenium-server-standalone-2.53.1.jar -role webdriver -hub http://localhost:4444/grid/register -nodeConfig defaultNodeConfig.json
-
-Or more recently: 
-~/code/joeg3/selenium-grid-example/src/test/resources$ java -jar selenium-server-standalone-2.53.1.jar -role node -hub http://10.0.1.7:4444/grid/register/ -nodeConfig node.json
+Start Node:
+1. In another terminal, cd to: `selenium-grid-example/src/test/resources`
+2. Run the following command: `java -jar selenium-server-standalone-2.47.0.jar -role node -nodeConfig node.json`

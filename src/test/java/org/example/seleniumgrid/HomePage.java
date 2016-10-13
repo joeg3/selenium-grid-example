@@ -20,15 +20,12 @@ public class HomePage extends LoadableComponent<HomePage> {
     private WebElement searchButton;
 
     public HomePage(WebDriver driver) {
-        System.out.println("here1");
         this.driver = driver;
         PageFactory.initElements(driver, this);
-        System.out.println("here2");
     }
     
     @Override
     protected void load() {
-        System.out.println("here!!!!!");
         this.driver.get(url);
     }
     
