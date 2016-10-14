@@ -6,6 +6,7 @@
         "version": "54",
         "platform": "LINUX",
         "maxInstances": 4,
+        "maxSession": 5,
         "seleniumProtocol": "WebDriver"
       }
       ],

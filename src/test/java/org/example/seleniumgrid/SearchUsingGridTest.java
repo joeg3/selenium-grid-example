@@ -14,7 +14,7 @@ public class SearchUsingGridTest extends GridBase {
     @Test(description = "Test DuckDuckGo Search")
     public void testSearch() throws Exception {
         homepage = new HomePage(getDriver(), getBaseUrl());
-        homepage.get();
+        //homepage.get();
         TimeUnit.SECONDS.sleep(10);
         //homepage.isLoaded(); // Throws error if not loaded
         assertEquals("DuckDuckGo", homepage.getTitle());

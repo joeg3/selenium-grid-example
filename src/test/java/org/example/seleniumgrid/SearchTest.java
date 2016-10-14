@@ -18,7 +18,7 @@ public class SearchTest {
     public void setup() {
         driver = new FirefoxDriver();
         homepage = new HomePage(driver, "https://www.duckduckgo.com");
-        homepage.get();
+        //homepage.get();
     }
     
     @After
@@ -28,7 +28,7 @@ public class SearchTest {
     
     @Test
     public void testSearch() throws Exception {
-        homepage.isLoaded(); // Throws error if not loaded
+        //homepage.isLoaded(); // Throws error if not loaded
         assertEquals("DuckDuckGo", homepage.getTitle());
         searchResultsPage = homepage.search("packers");
         assertEquals("packers at DuckDuckGo", searchResultsPage.getTitle());

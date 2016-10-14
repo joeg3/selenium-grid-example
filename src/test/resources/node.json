@@ -5,14 +5,16 @@
         "browserName": "firefox",
         "version": "49.0",
         "platform": "LINUX",
-        "maxInstances": 4,
+        "maxInstances": 5,
+        "maxSession": 5,
         "seleniumProtocol": "WebDriver"
       },
       {
         "browserName": "internet explorer",
         "version": "10",
         "platform": "WINDOWS",
-        "maxInstances": 4,
+        "maxInstances": 5,
+        "maxSession": 5,
         "seleniumProtocol": "WebDriver"
       }
       ],

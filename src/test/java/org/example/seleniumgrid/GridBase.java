@@ -3,6 +3,7 @@ package org.example.seleniumgrid;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
@@ -11,7 +12,7 @@ import org.testng.annotations.Parameters;
 
 public class GridBase {
     
-    private RemoteWebDriver driver;
+    public static ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<WebDriver>();
     private String baseUrl = "https://www.duckduckgo.com";
     
     @Parameters({ "platform", "browser", "version", "url" })
@@ -59,21 +60,21 @@ public class GridBase {
 
         capabilities.setVersion(version);
         
-        driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
+        setDriver(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities));
     }
     
     @AfterClass
     public void afterTest(){
-        driver.close();
-        driver.quit();
+        getDriver().close();
+        getDriver().quit();
     }
-
-    public RemoteWebDriver getDriver() {
-        return driver;
+    
+    public WebDriver getDriver() {
+        return threadLocalDriver.get();
     }
-
-    public void setDriver(RemoteWebDriver driver) {
-        this.driver = driver;
+ 
+    public void setDriver(WebDriver driver) {
+        threadLocalDriver.set(driver);
     }
 
     public String getBaseUrl() {

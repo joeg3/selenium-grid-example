@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.LoadableComponent;
 
-public class HomePage extends LoadableComponent<HomePage> {
+public class HomePage {//extends LoadableComponent<HomePage> {
 
     private WebDriver driver;
     private String url;
@@ -24,19 +24,20 @@ public class HomePage extends LoadableComponent<HomePage> {
         this.driver = driver;
         this.url = baseUrl + pagePath;
         PageFactory.initElements(driver, this);
-    }
-    
-    @Override
-    protected void load() {
         this.driver.get(url);
     }
     
-    @Override
-    protected void isLoaded() throws Error {
-        if (!driver.getTitle().equals(title)) {
-            throw new Error("Duck Duck Go page not loaded");
-        }
-    }
+//    @Override
+//    protected void load() {
+//        this.driver.get(url);
+//    }
+//    
+//    @Override
+//    protected void isLoaded() throws Error {
+//        if (!driver.getTitle().equals(title)) {
+//            throw new Error("Duck Duck Go page not loaded");
+//        }
+//    }
 
     public String getTitle(){
        return driver.getTitle();

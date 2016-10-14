@@ -1,16 +1,15 @@
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Parallel Tests" verbose="1" thread-count="4" parallel="classes">
-   
-<!--         <test name="Windows+IE10 Test"> -->
-<!-- 			<parameter name="platform" value="Windows" /> -->
-<!-- 			<parameter name="browser" value="internet explorer" /> -->
-<!-- 			<parameter name="version" value="10" /> -->
-<!-- 			<parameter name="url" value="http://duckduckgo.com" /> -->
-<!-- 			<classes> -->
-<!-- 				<class name="org.example.seleniumgrid.SearchUsingGridTest" /> -->
-<!-- 			</classes> -->
-<!-- 		</test> -->
-		
+<suite name="Parallel Tests" verbose="1" thread-count="4" parallel="tests">
+	<tests>
+		<!-- <test name="Windows+IE10 Test"> -->
+		<!-- <parameter name="platform" value="Windows" /> -->
+		<!-- <parameter name="browser" value="internet explorer" /> -->
+		<!-- <parameter name="version" value="10" /> -->
+		<!-- <parameter name="url" value="http://duckduckgo.com" /> -->
+		<!-- <classes> -->
+		<!-- <class name="org.example.seleniumgrid.SearchUsingGridTest" /> -->
+		<!-- </classes> -->
+		<!-- </test> -->
+
 		<test name="Linux+Firefox Test">
 			<parameter name="platform" value="Linux" />
 			<parameter name="browser" value="firefox" />
@@ -20,38 +19,38 @@
 				<class name="org.example.seleniumgrid.SearchUsingGridTest" />
 			</classes>
 		</test>
-<!-- 		<test name="Mac+Safari Test"> -->
-			
-<!-- 				<parameter name="platform" value="Mac" /> -->
-<!-- 				<parameter name="browser" value="safari" /> -->
-<!-- 				<parameter name="version" value="9" /> -->
-<!-- 				<parameter name="url" value="http://duckduckgo.com" /> -->
-			
-<!-- 			<classes> -->
-<!-- 				<class name="org.example.seleniumgrid.SearchUsingGridTest" /> -->
-<!-- 			</classes> -->
-<!-- 		</test> -->
+		<!-- <test name="Mac+Safari Test"> -->
+
+		<!-- <parameter name="platform" value="Mac" /> -->
+		<!-- <parameter name="browser" value="safari" /> -->
+		<!-- <parameter name="version" value="9" /> -->
+		<!-- <parameter name="url" value="http://duckduckgo.com" /> -->
+
+		<!-- <classes> -->
+		<!-- <class name="org.example.seleniumgrid.SearchUsingGridTest" /> -->
+		<!-- </classes> -->
+		<!-- </test> -->
 		<test name="Linux+Chrome Test">
-			
-				<parameter name="platform" value="Linux" />
-				<parameter name="browser" value="chrome" />
-				<parameter name="version" value="54" />
-				<parameter name="url" value="http://duckduckgo.com" />
-			
+
+			<parameter name="platform" value="Linux" />
+			<parameter name="browser" value="chrome" />
+			<parameter name="version" value="54" />
+			<parameter name="url" value="http://duckduckgo.com" />
+
 			<classes>
 				<class name="org.example.seleniumgrid.SearchUsingGridTest" />
 			</classes>
 		</test>
-<!-- 		<test name="Windows+Chrome Test"> -->
-			
-<!-- 				<parameter name="platform" value="Windows" /> -->
-<!-- 				<parameter name="browser" value="chrome" /> -->
-<!-- 				<parameter name="version" value="35" /> -->
-<!-- 				<parameter name="url" value="http://duckduckgo.com" /> -->
-			
-<!-- 			<classes> -->
-<!-- 				<class name="org.example.seleniumgrid.SearchUsingGridTest" /> -->
-<!-- 			</classes> -->
-<!-- 		</test> -->
-	
+		<!-- <test name="Windows+Chrome Test"> -->
+
+		<!-- <parameter name="platform" value="Windows" /> -->
+		<!-- <parameter name="browser" value="chrome" /> -->
+		<!-- <parameter name="version" value="35" /> -->
+		<!-- <parameter name="url" value="http://duckduckgo.com" /> -->
+
+		<!-- <classes> -->
+		<!-- <class name="org.example.seleniumgrid.SearchUsingGridTest" /> -->
+		<!-- </classes> -->
+		<!-- </test> -->
+	</tests>
 </suite>
