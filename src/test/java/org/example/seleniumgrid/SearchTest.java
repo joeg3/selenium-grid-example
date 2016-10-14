@@ -17,7 +17,7 @@ public class SearchTest {
     @Before
     public void setup() {
         driver = new FirefoxDriver();
-        homepage = new HomePage(driver);
+        homepage = new HomePage(driver, "https://www.duckduckgo.com");
         homepage.get();
     }
     

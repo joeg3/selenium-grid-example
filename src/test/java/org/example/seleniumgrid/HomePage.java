@@ -10,7 +10,8 @@ import org.openqa.selenium.support.ui.LoadableComponent;
 public class HomePage extends LoadableComponent<HomePage> {
 
     private WebDriver driver;
-    private String url = "https://www.duckduckgo.com";
+    private String url;
+    private String pagePath = "";
     private String title = "DuckDuckGo";
 
     @FindBy(id = "search_form_input_homepage")
@@ -19,8 +20,9 @@ public class HomePage extends LoadableComponent<HomePage> {
     @FindBy(id = "search_button_homepage")
     private WebElement searchButton;
 
-    public HomePage(WebDriver driver) {
+    public HomePage(WebDriver driver, String baseUrl) {
         this.driver = driver;
+        this.url = baseUrl + pagePath;
         PageFactory.initElements(driver, this);
     }
     
