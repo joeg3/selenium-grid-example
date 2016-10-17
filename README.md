@@ -16,10 +16,8 @@ Note we don't need to specify the driver in the command because it is on our $PA
 
 Start Selenium Hub:
 
-1. In a terminal, cd to:
-        `selenium-grid-example/src/test/resources`
-2. Run the following command:
-        `java -jar selenium-server-standalone-2.47.0.jar -role hub -hubConfig hub.json`
+1. In a terminal, cd to: `selenium-grid-example/src/test/resources`
+2. Run the following command: `java -jar selenium-server-standalone-2.47.0.jar -role hub -hubConfig hub.json`
 
 Start Node:
 
