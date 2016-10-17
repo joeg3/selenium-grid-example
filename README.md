@@ -22,5 +22,6 @@ Start Selenium Hub:
         `java -jar selenium-server-standalone-2.47.0.jar -role hub -hubConfig hub.json`
 
 Start Node:
+
 1. In another terminal, cd to: `selenium-grid-example/src/test/resources`
 2. Run the following command: `java -jar selenium-server-standalone-2.47.0.jar -role node -nodeConfig node.json`
