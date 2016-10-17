@@ -15,8 +15,10 @@ I ran the tests on Ubuntu 16.04, and used Eclipse for development.
 Note we don't need to specify the driver in the command because it is on our $PATH, and we don't need to specify the hub when starting the node becasue that is in the JSON files.
 
 Start Selenium Hub:
-1. In a terminal, cd to: `selenium-grid-example/src/test/resources`
-2. Run the following command: `java -jar selenium-server-standalone-2.47.0.jar -role hub -hubConfig hub.json`
+1. In a terminal, cd to:
+        `selenium-grid-example/src/test/resources`
+2. Run the following command:
+        `java -jar selenium-server-standalone-2.47.0.jar -role hub -hubConfig hub.json`
 
 Start Node:
 1. In another terminal, cd to: `selenium-grid-example/src/test/resources`
