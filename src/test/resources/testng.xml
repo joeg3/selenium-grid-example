@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <suite name="Parallel Tests" verbose="1" thread-count="4" parallel="tests">
 	<tests>
 		<!-- <test name="Windows+IE10 Test"> -->
