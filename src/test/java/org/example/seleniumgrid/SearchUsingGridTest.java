@@ -4,6 +4,8 @@ import static org.testng.Assert.assertEquals;
 
 import java.util.concurrent.TimeUnit;
 
+import org.example.seleniumgrid.pageobjects.HomePage;
+import org.example.seleniumgrid.pageobjects.SearchResultsPage;
 import org.testng.annotations.Test;
   
 public class SearchUsingGridTest extends GridBase {

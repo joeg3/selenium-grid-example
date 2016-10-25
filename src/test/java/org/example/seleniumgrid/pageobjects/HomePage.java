@@ -1,4 +1,4 @@
-package org.example.seleniumgrid;
+package org.example.seleniumgrid.pageobjects;
 
 import static org.testng.AssertJUnit.assertTrue;
 import org.openqa.selenium.WebDriver;

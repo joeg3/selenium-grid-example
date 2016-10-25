@@ -1,4 +1,4 @@
-package org.example.seleniumgrid;
+package org.example.seleniumgrid.pageobjects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;

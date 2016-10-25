@@ -2,6 +2,8 @@ package org.example.seleniumgrid;
 
 import static org.junit.Assert.assertEquals;
 
+import org.example.seleniumgrid.pageobjects.HomePage;
+import org.example.seleniumgrid.pageobjects.SearchResultsPage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
