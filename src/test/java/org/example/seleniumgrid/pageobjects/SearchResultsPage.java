@@ -1,19 +1,17 @@
 package org.example.seleniumgrid.pageobjects;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 
-public class SearchResultsPage {
+public class SearchResultsPage extends BasePage {
 
     WebDriver driver;
 
     public SearchResultsPage(WebDriver driver){
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
     public String getTitle() {
-        return this.driver.getTitle();
+        return super.getDriver().getTitle();
     }
 
 }

@@ -1,18 +1,12 @@
 package org.example.seleniumgrid.pageobjects;
 
-import static org.testng.AssertJUnit.assertTrue;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.LoadableComponent;
 
-public class HomePage {//extends LoadableComponent<HomePage> {
+public class HomePage extends BasePage {
 
-    private WebDriver driver;
-    private String url;
     private String pagePath = "";
-    private String title = "DuckDuckGo";
 
     @FindBy(id = "search_form_input_homepage")
     private WebElement searchText;
@@ -21,32 +15,14 @@ public class HomePage {//extends LoadableComponent<HomePage> {
     private WebElement searchButton;
 
     public HomePage(WebDriver driver, String baseUrl) {
-        this.driver = driver;
-        this.url = baseUrl + pagePath;
-        PageFactory.initElements(driver, this);
-        this.driver.get(url);
-    }
-    
-//    @Override
-//    protected void load() {
-//        this.driver.get(url);
-//    }
-//    
-//    @Override
-//    protected void isLoaded() throws Error {
-//        if (!driver.getTitle().equals(title)) {
-//            throw new Error("Duck Duck Go page not loaded");
-//        }
-//    }
-
-    public String getTitle(){
-       return driver.getTitle();
+        super(driver);
+        super.setUrl(baseUrl + pagePath);
     }
 
     public SearchResultsPage search(String searchString) throws Exception {
         setSearchText(searchString);
         clickSearchButton();
-        return new SearchResultsPage(driver);
+        return new SearchResultsPage(super.getDriver());
     }
 
     public void setSearchText(String searchText) {

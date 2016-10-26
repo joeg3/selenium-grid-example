@@ -16,12 +16,12 @@ public class SearchUsingGridTest extends GridBase {
     @Test(description = "Test DuckDuckGo Search")
     public void testSearch() throws Exception {
         homepage = new HomePage(getDriver(), getBaseUrl());
-        //homepage.get();
-        TimeUnit.SECONDS.sleep(10);
-        //homepage.isLoaded(); // Throws error if not loaded
+        homepage.load();
         assertEquals("DuckDuckGo", homepage.getTitle());
-        searchResultsPage = homepage.search("packers");
-        //TimeUnit.SECONDS.sleep(5);
-        assertEquals("packers at DuckDuckGo", searchResultsPage.getTitle());
+        
+        TimeUnit.SECONDS.sleep(10); // Demonstrate browser tests running in parallel
+        
+        searchResultsPage = homepage.search("green bay packers");
+        assertEquals("green bay packers at DuckDuckGo", searchResultsPage.getTitle());
   }
 }
