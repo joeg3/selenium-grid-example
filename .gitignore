@@ -21,6 +21,9 @@ test-output/
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
 !gradle-wrapper.jar
 
+### Vagrant ###
+.vagrant
+
 ### Selenium ###
 # It's easier to keep Selenium server standalone jar in src/test/resources
 # where the Selenium JSON config files are, but don't want in Git
