@@ -1,0 +1,15 @@
+---
+- name: Set up VM to run Selenium tests on Linux/Firefox environment
+  hosts: linux_ff_server
+  become: True
+  become_method: sudo
+  tasks:
+    - name: install open jdk 7
+      apt: name=openjdk-7-jdk update_cache=yes
+
+    - name: install firefox
+      apt: name=firefox update_cache=yes
+
+    - name: copy Selenium jar and node config
+      copy: src=src/test/resources dest=/home/vagrant/src/test
+
