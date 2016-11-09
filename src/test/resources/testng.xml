@@ -31,17 +31,17 @@
 		<!-- <class name="org.example.seleniumgrid.SearchUsingGridTest" /> -->
 		<!-- </classes> -->
 		<!-- </test> -->
-		<test name="Linux+Chrome Test">
+<!-- 		<test name="Linux+Chrome Test"> -->
 
-			<parameter name="platform" value="Linux" />
-			<parameter name="browser" value="chrome" />
-			<parameter name="version" value="54" />
-			<parameter name="url" value="http://duckduckgo.com" />
+<!-- 			<parameter name="platform" value="Linux" /> -->
+<!-- 			<parameter name="browser" value="chrome" /> -->
+<!-- 			<parameter name="version" value="54" /> -->
+<!-- 			<parameter name="url" value="http://duckduckgo.com" /> -->
 
-			<classes>
-				<class name="org.example.seleniumgrid.SearchUsingGridTest" />
-			</classes>
-		</test>
+<!-- 			<classes> -->
+<!-- 				<class name="org.example.seleniumgrid.SearchUsingGridTest" /> -->
+<!-- 			</classes> -->
+<!-- 		</test> -->
 		<!-- <test name="Windows+Chrome Test"> -->
 
 		<!-- <parameter name="platform" value="Windows" /> -->

@@ -59,7 +59,7 @@ public class GridBase {
 
         capabilities.setVersion(version);
         
-        setDriver(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities));
+        setDriver(new RemoteWebDriver(new URL("http://192.168.33.10:4444/wd/hub"), capabilities));
     }
     
     @AfterClass

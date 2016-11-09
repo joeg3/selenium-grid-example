@@ -8,14 +8,6 @@
         "maxInstances": 5,
         "maxSession": 5,
         "seleniumProtocol": "WebDriver"
-      },
-      {
-        "browserName": "internet explorer",
-        "version": "10",
-        "platform": "WINDOWS",
-        "maxInstances": 5,
-        "maxSession": 5,
-        "seleniumProtocol": "WebDriver"
       }
       ],
   "configuration":
@@ -26,6 +18,6 @@
     "register": true,
     "registerCycle": 5000,
     "hubPort": 4444,
-    "hubHost": "127.0.0.1"
+    "hubHost": "192.168.33.10"
   }
 }

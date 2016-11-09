@@ -3,13 +3,38 @@
   hosts: linux_ff_server
   become: True
   become_method: sudo
+  environment:
+    DISPLAY: "localhost:0.0"
   tasks:
-    - name: install open jdk 7
-      apt: name=openjdk-7-jdk update_cache=yes
+    - name: pwd command
+      command: pwd
+      register: out
+    - debug: var=out.stdout
+    
+    - name: install apt packages
+      apt: pkg={{ item }} update_cache=yes
+      with_items:
+        - openjdk-7-jdk
+        - firefox
+        - daemon
+        - xvfb
+        - xorg
+        - dbus-x11
+        - xfonts-100dpi
+        - xfonts-75dpi
+        - xfonts-cyrillic
+    
+    - name: Xvfb command
+      shell: daemon -- Xvfb
+      register: out
+    - debug: var=out.stdout
 
-    - name: install firefox
-      apt: name=firefox update_cache=yes
-
-    - name: copy Selenium jar and node config
-      copy: src=src/test/resources dest=/home/vagrant/src/test
-
+    - name: start hub
+      shell: daemon -- java -jar /vagrant/src/test/resources/selenium-server-standalone-2.47.0.jar -role hub -hubConfig /vagrant/src/test/resources/hub.json
+      register: results
+    - debug: var=results.stdout
+      
+    - name: start node
+      shell: daemon -- java -jar /vagrant/src/test/resources/selenium-server-standalone-2.47.0.jar -role node -nodeConfig /vagrant/src/test/resources/firefox-linux.json
+      register: results
+    - debug: var=results.stdout
