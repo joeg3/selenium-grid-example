@@ -1,20 +1,25 @@
 ---
 - name: Set up VM to run Selenium tests on Linux/Firefox environment
-  hosts: linux_ff_server
+  hosts: linux_selenium_server
   become: True
   become_method: sudo
   environment:
     DISPLAY: "localhost:0.0"
+  vars:
+    selenium_dir: /vagrant/src/test/resources
+    selenium_jar: /opt/selenium/selenium.jar
   tasks:
-    - name: pwd command
-      command: pwd
-      register: out
-    - debug: var=out.stdout
-    
-    - name: install apt packages
+    - name: Add Google Chrome key
+      apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub state=present
+
+    - name: Add Google Chrome repo
+      copy: content="deb http://dl.google.com/linux/chrome/deb/ stable main" dest=/etc/apt/sources.list.d/google-chrome.list owner=root group=root mode=644
+  
+    - name: Install apt packages
       apt: pkg={{ item }} update_cache=yes
       with_items:
         - openjdk-7-jdk
+        - unzip
         - firefox
         - daemon
         - xvfb
@@ -23,18 +28,25 @@
         - xfonts-100dpi
         - xfonts-75dpi
         - xfonts-cyrillic
-    
-    - name: Xvfb command
-      shell: daemon -- Xvfb
-      register: out
-    - debug: var=out.stdout
-
-    - name: start hub
-      shell: daemon -- java -jar /vagrant/src/test/resources/selenium-server-standalone-2.47.0.jar -role hub -hubConfig /vagrant/src/test/resources/hub.json
-      register: results
-    - debug: var=results.stdout
+        - google-chrome-stable
+   
+    - name: Download Chrome driver and unzip into /usr/local/bin
+      unarchive: src=http://chromedriver.storage.googleapis.com/2.24/chromedriver_linux64.zip dest=/usr/local/bin remote_src=yes
       
-    - name: start node
-      shell: daemon -- java -jar /vagrant/src/test/resources/selenium-server-standalone-2.47.0.jar -role node -nodeConfig /vagrant/src/test/resources/firefox-linux.json
-      register: results
-    - debug: var=results.stdout
+    - name: Create destination directory for Selenium jar
+      file: name=/opt/selenium state=directory mode=0755
+    
+    - name: download selenium jar
+      get_url: url="http://selenium-release.storage.googleapis.com/2.47/selenium-server-standalone-2.47.0.jar" dest={{ selenium_jar }}
+    
+    - name: Start Xvfb 
+      shell: daemon -- Xvfb
+
+    - name: Start Selenium hub
+      shell: daemon -- java -jar {{ selenium_jar }} -role hub -hubConfig {{ selenium_dir }}/hub.json
+      
+    - name: Start Selenium Firefox node
+      shell: daemon -- java -jar {{ selenium_jar }} -role node -nodeConfig {{ selenium_dir }}/firefox-linux.json
+      
+    - name: Start Selenium Chrome node
+      shell: daemon -- java -jar {{ selenium_jar }} -role node -nodeConfig {{ selenium_dir }}/chrome-linux.json

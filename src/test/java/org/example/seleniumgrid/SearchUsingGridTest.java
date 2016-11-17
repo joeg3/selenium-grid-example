@@ -19,7 +19,7 @@ public class SearchUsingGridTest extends GridBase {
         homepage.load();
         assertEquals("DuckDuckGo", homepage.getTitle());
         
-        TimeUnit.SECONDS.sleep(10); // Demonstrate browser tests running in parallel
+        //TimeUnit.SECONDS.sleep(10); // Demonstrate browser tests running in parallel
         
         searchResultsPage = homepage.search("green bay packers");
         assertEquals("green bay packers at DuckDuckGo", searchResultsPage.getTitle());
