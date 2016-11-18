@@ -1,11 +1,18 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="SeleniumGrid" verbose="4" thread-count="10" parallel="tests">
 
+    <!-- Change to 127.0.0.1 if running hub locally on development machine -->
+    <parameter name="hubIpAddress" value="192.168.33.10" />
+<!--     <parameter name="hubIpAddress" value="127.0.0.1" /> -->
+    
+    <!-- Change if for example url is a test server of site -->
+    <parameter name="baseUrl" value="https://www.duckduckgo.com" />
+
+
 	<test name="Linux+Firefox Test">
 		<parameter name="platform" value="Linux" />
 		<parameter name="browser" value="firefox" />
 		<parameter name="version" value="49.0" />
-		<parameter name="url" value="http://duckduckgo.com" />
 		<classes>
 			<class name="org.example.seleniumgrid.SearchUsingGridTest" />
 		</classes>
@@ -15,7 +22,6 @@
 		<parameter name="platform" value="Linux" />
 		<parameter name="browser" value="chrome" />
 		<parameter name="version" value="54" />
-		<parameter name="url" value="http://duckduckgo.com" />
 		<classes>
 			<class name="org.example.seleniumgrid.SearchUsingGridTest" />
 		</classes>
@@ -25,7 +31,6 @@
 		<!-- <parameter name="platform" value="Windows" /> -->
 		<!-- <parameter name="browser" value="internet explorer" /> -->
 		<!-- <parameter name="version" value="10" /> -->
-		<!-- <parameter name="url" value="http://duckduckgo.com" /> -->
 		<!-- <classes> -->
 		<!-- <class name="org.example.seleniumgrid.SearchUsingGridTest" /> -->
 		<!-- </classes> -->
@@ -35,7 +40,6 @@
 		<!-- <parameter name="platform" value="Mac" /> -->
 		<!-- <parameter name="browser" value="safari" /> -->
 		<!-- <parameter name="version" value="9" /> -->
-		<!-- <parameter name="url" value="http://duckduckgo.com" /> -->
 		<!-- <classes> -->
 		<!-- <class name="org.example.seleniumgrid.SearchUsingGridTest" /> -->
 		<!-- </classes> -->
@@ -45,7 +49,6 @@
 		<!-- <parameter name="platform" value="Windows" /> -->
 		<!-- <parameter name="browser" value="chrome" /> -->
 		<!-- <parameter name="version" value="35" /> -->
-		<!-- <parameter name="url" value="http://duckduckgo.com" /> -->
 		<!-- <classes> -->
 		<!-- <class name="org.example.seleniumgrid.SearchUsingGridTest" /> -->
 		<!-- </classes> -->

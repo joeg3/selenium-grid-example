@@ -12,11 +12,18 @@ import org.testng.annotations.Parameters;
 public class GridBase {
     
     public static ThreadLocal<RemoteWebDriver> threadLocalDriver = new ThreadLocal<RemoteWebDriver>();
-    private String baseUrl = "https://www.duckduckgo.com";
+    private String baseUrl;
+    private String hubIpAddress;
     
-    @Parameters({ "platform", "browser", "version", "url" })
+    @Parameters({ "hubIpAddress", "baseUrl" })
+    public GridBase(String hubIpAddress, String baseUrl) {
+        this.hubIpAddress = hubIpAddress;
+        this.baseUrl = baseUrl;
+    }
+    
+    @Parameters({ "platform", "browser", "version" })
     @BeforeClass(alwaysRun = true)
-    public void beforeClass(String platform, String browser, String version, String url) throws MalformedURLException {
+    public void beforeClass(String platform, String browser, String version) throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         
         // Browsers
@@ -59,7 +66,7 @@ public class GridBase {
 
         capabilities.setVersion(version);
         
-        setDriver(new RemoteWebDriver(new URL("http://192.168.33.10:4444/wd/hub"), capabilities));
+        setDriver(new RemoteWebDriver(new URL("http://" + hubIpAddress + ":4444/wd/hub"), capabilities));
     }
     
     @AfterClass

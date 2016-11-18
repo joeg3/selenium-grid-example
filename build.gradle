@@ -16,8 +16,11 @@ repositories {
 }
 
 test {
-    useTestNG() {
+    useTestNG() { 
         suites 'src/test/resources/testng.xml'
+        // For TestNG style reports instead of Gradle reports, uncomment next two lines
+        // useDefaultListeners = true
+        // reports.html.enabled = false
     }
 }
 

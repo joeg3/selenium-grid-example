@@ -48,13 +48,16 @@ Vagrant.configure(2) do |config|
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
   #
-   config.vm.provider "virtualbox" do |vb|
+  # I was able to run one node without problem, but when I would try to 
+  # run both at the same time I would get strange inconsistent errors.
+  # Doubling the amount of memory for VirtualBox solved the issue.
+  config.vm.provider "virtualbox" do |vb|
   #   # Display the VirtualBox GUI when booting the machine
   #   vb.gui = true
   #
-     # Customize the amount of memory on the VM:
-     vb.memory = "1024"
-   end
+    # Customize the amount of memory on the VM:
+    vb.memory = "1024"
+  end
   #
   # View the documentation for the provider you are using for more
   # information on available options.
