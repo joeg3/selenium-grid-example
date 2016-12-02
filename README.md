@@ -10,6 +10,7 @@ A small project I created to help me learn Selenium Grid
 
 ### Start Selenium Grid on a Virtual Machine
 This would be used for production testing.
+
 1. In a terminal, cd to: `selenium-grid-example` project directory
 2. Run the command `vagrant up` to start the virtual machine.
 3. Run command `ansible-playbook main.yml` to configure the virtual machine and start Selenium hub and nodes.
@@ -17,6 +18,7 @@ This would be used for production testing.
 ### Start Selenium Grid on your Development Machine
 This would be used on your development machine to see what is going on when writing tests.
 Setup:
+
 1. Download the chrome driver to a directory on your hard drive. I used `~/drivers`.
 2. Add the driver directory to your $PATH or %PATH%. That way we won't need to specify the driver when starting the chrome node.
 3. In `testng.xml` change the `hubIpAddress` parameter to `127.0.0.1`. Note also that we will specify the host from the command line when starting the hub and nodes to override the default value in the JSON files.

@@ -5,7 +5,7 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
-    jcenter()
+    //jcenter()
     mavenCentral()
 }
 
@@ -13,6 +13,7 @@ repositories {
    testCompile group: 'junit', name: 'junit', version: '4.12'
    testCompile 'org.testng:testng:6.9.12'
    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '2.47.0'
+   testCompile group: 'org.testng', name: 'testng', version: '6.9.13.6'
 }
 
 test {
