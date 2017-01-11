@@ -4,7 +4,7 @@
   become: True
   become_method: sudo
   environment:
-    DISPLAY: "localhost:0.0"
+    DISPLAY: ":99"
   vars:
     selenium_dir: /vagrant/src/test/resources
     selenium_jar: /opt/selenium/selenium.jar
@@ -18,7 +18,7 @@
     - name: Install apt packages
       apt: pkg={{ item }} update_cache=yes
       with_items:
-        - openjdk-7-jdk
+        - openjdk-8-jdk
         - unzip
         - firefox
         - daemon
@@ -31,16 +31,19 @@
         - google-chrome-stable
    
     - name: Download Chrome driver and unzip into /usr/local/bin
-      unarchive: src=http://chromedriver.storage.googleapis.com/2.24/chromedriver_linux64.zip dest=/usr/local/bin remote_src=yes
+      unarchive: src=http://chromedriver.storage.googleapis.com/2.27/chromedriver_linux64.zip dest=/usr/local/bin remote_src=yes
+      
+    - name: Download Gecko driver and unzip into /usr/local/bin
+      unarchive: src=https://github.com/mozilla/geckodriver/releases/download/v0.12.0/geckodriver-v0.12.0-linux64.tar.gz dest=/usr/local/bin remote_src=yes
       
     - name: Create destination directory for Selenium jar
       file: name=/opt/selenium state=directory mode=0755
     
     - name: download selenium jar
-      get_url: url="http://selenium-release.storage.googleapis.com/2.47/selenium-server-standalone-2.47.0.jar" dest={{ selenium_jar }}
+      get_url: url="http://selenium-release.storage.googleapis.com/3.0/selenium-server-standalone-3.0.1.jar" dest={{ selenium_jar }}
     
     - name: Start Xvfb 
-      shell: daemon -- Xvfb
+      shell: daemon -- Xvfb :99
 
     - name: Start Selenium hub
       shell: daemon -- java -jar {{ selenium_jar }} -role hub -hubConfig {{ selenium_dir }}/hub.json

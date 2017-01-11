@@ -1,10 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-# All Vagrant configuration is done below. The "2" in Vagrant.configure
-# configures the configuration version (we support older styles for
-# backwards compatibility). Please don't change it unless you know what
-# you're doing.
 Vagrant.configure(2) do |config|
   # The most common configuration options are documented and commented below.
   # For a complete reference, please see the online documentation at
@@ -12,9 +8,8 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "ubuntu/trusty64"
-  #config.vm.box = "ubuntu/xenial64"
-  #config.vm.box = " bento/ubuntu-16.04"
+  #config.vm.box = "ubuntu/trusty64"
+  config.vm.box = "ubuntu/xenial64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -25,7 +20,7 @@ Vagrant.configure(2) do |config|
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
   # config.vm.network "forwarded_port", guest: 80, host: 8080
-  config.vm.network "forwarded_port", guest: 4444, host: 4444
+  config.vm.network :forwarded_port, guest: 4444, host: 4444
   config.vm.network :forwarded_port, guest: 5555, host: 5555
   config.vm.network :forwarded_port, guest: 6666, host: 6666
 
@@ -48,13 +43,13 @@ Vagrant.configure(2) do |config|
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
   #
-  # I was able to run one node without problem, but when I would try to 
+  # I was able to run one node without problem, but when I would try to
   # run both at the same time I would get strange inconsistent errors.
   # Doubling the amount of memory for VirtualBox solved the issue.
   config.vm.provider "virtualbox" do |vb|
-  #   # Display the VirtualBox GUI when booting the machine
-  #   vb.gui = true
-  #
+    #   # Display the VirtualBox GUI when booting the machine
+    #   vb.gui = true
+    #
     # Customize the amount of memory on the VM:
     vb.memory = "1024"
   end
@@ -76,4 +71,17 @@ Vagrant.configure(2) do |config|
   #   sudo apt-get update
   #   sudo apt-get install -y apache2
   # SHELL
+
+  # The ubuntu/xenial box doesn't install python 2 by default,
+  # so have to do it here because Ansible needs it
+  config.vm.provision "shell" do |s|
+    s.inline = "apt-get install -y python"
+  end
+
+  # Then run the ansible script
+  #config.vm.provision "ansible", playbook: "main.yml"
+  #  config.vm.provision "ansible" do |ansible|
+  #    ansible.verbose = "v"
+  #    ansible.playbook = "/home/joe/code/joeg3/selenium-grid-example/main.yml"
+  #  end
 end

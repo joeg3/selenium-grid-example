@@ -3,6 +3,7 @@ package org.example.seleniumgrid;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
@@ -24,44 +25,32 @@ public class GridBase {
     @Parameters({ "platform", "browser", "version" })
     @BeforeClass(alwaysRun = true)
     public void beforeClass(String platform, String browser, String version) throws MalformedURLException {
+
         DesiredCapabilities capabilities = new DesiredCapabilities();
         
         // Browsers
         if (browser.equalsIgnoreCase("Internet Explorer")) {
             capabilities = DesiredCapabilities.internetExplorer();
-            capabilities.setBrowserName("internet explorer");
-            capabilities.setVersion(version);
         }
-
         if (browser.equalsIgnoreCase("Firefox")) {
             capabilities = DesiredCapabilities.firefox();
-            capabilities.setBrowserName("firefox");
-            capabilities.setVersion(version);
         }
-
         if (browser.equalsIgnoreCase("Chrome")) {
             capabilities = DesiredCapabilities.chrome();
-            capabilities.setBrowserName("chrome");
-            capabilities.setVersion(version);
         }
-
         if (browser.equalsIgnoreCase("Safari")) {
             capabilities = DesiredCapabilities.safari();
-            capabilities.setBrowserName("safari");
-            capabilities.setVersion(version);
         }
         
         // Platforms
-        if (platform.equalsIgnoreCase("Windows")) {
-            capabilities.setPlatform(org.openqa.selenium.Platform.WINDOWS);
+        if (platform.equalsIgnoreCase("WINDOWS")) {
+            capabilities.setPlatform(Platform.WINDOWS);
         }
-
         if (platform.equalsIgnoreCase("MAC")) {
-            capabilities.setPlatform(org.openqa.selenium.Platform.MAC);
+            capabilities.setPlatform(Platform.MAC);
         }
-        
         if (platform.equalsIgnoreCase("LINUX")) {
-            capabilities.setPlatform(org.openqa.selenium.Platform.LINUX);
+            capabilities.setPlatform(Platform.LINUX);
         }
 
         capabilities.setVersion(version);

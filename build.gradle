@@ -1,18 +1,18 @@
-apply plugin: 'java'
-apply plugin: 'eclipse'
+// New plugins DSL introduced in Gradle 2.1
+plugins {
+  id 'java'
+}
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
-    //jcenter()
     mavenCentral()
 }
 
  dependencies {
    testCompile group: 'junit', name: 'junit', version: '4.12'
-   testCompile 'org.testng:testng:6.9.12'
-   compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '2.47.0'
+   testCompile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.0.1'
    testCompile group: 'org.testng', name: 'testng', version: '6.9.13.6'
 }
 
@@ -26,5 +26,6 @@ test {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.13'
+    gradleVersion = '3.1'
 }
+

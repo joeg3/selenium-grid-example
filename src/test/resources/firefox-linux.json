@@ -3,21 +3,18 @@
     [
       {
         "browserName": "firefox",
-        "version": "49.0",
-        "platform": "LINUX",
+        "version": "50.1.0",
+        "platform": "Linux",
         "maxInstances": 5,
         "maxSession": 5,
         "seleniumProtocol": "WebDriver"
       }
       ],
-  "configuration":
-  {
-    "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
-    "maxSession": 5,
-    "port": 5555,
-    "register": true,
-    "registerCycle": 5000,
-    "hubPort": 4444,
-    "hubHost": "192.168.33.10"
-  }
+  "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
+  "maxSession": 5,
+  "port": 5555,
+  "register": true,
+  "registerCycle": 5000,
+  "hubPort": 4444,
+  "hubHost": "192.168.33.10"
 }
