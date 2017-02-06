@@ -48,6 +48,7 @@ In a browser, you can see the TestNG Reports by navigating to: `file:///my_dir/s
 
 ### Things to improve/fix:
 * Have Vagrant run the Ansible script to provision. When I tried, it didn't seem to run.
+* Parameterize hub port number in `testng.xml` much like the hub ip address is.
 
 ### Gotcha's I had to resolve
 1. I read somewhere before I started the project that to run the tests in parallel you have to use TestNG instead of JUnit. So I went that route early on.
